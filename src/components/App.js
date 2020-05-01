@@ -7,17 +7,30 @@ import {
     NavLink,
     Switch,
 } from 'react-router-dom';
+import Counter from './counter';
+import Controls from './controls';
 
 const About = (props) => {
     return <div> All there is to know about me </div>;
 };
 
 const Welcome = (props) => {
-    return <div>Welcome</div>;
+    return (
+        <div>
+            <Controls />
+            Welcome
+        </div>
+    );
 };
 
 const Test = (props) => {
-    return <div> ID: {props.match.params.id} </div>;
+    return (
+        <div>
+            <Counter />
+            ID: {props.match.params.id}
+        </div>
+
+    );
 };
 
 const FallBack = (props) => {
@@ -40,15 +53,15 @@ const Nav = (props) => {
 const App = (props) => {
     return (
         <Router>
-        <div>
-            <Nav />
-            <Switch>
-                <Route exact path="/" component={Welcome} />
-                <Route path="/about" component={About} />
-                <Route exact path="/test/:id" component={Test} />
-                <Route component={FallBack} />
-            </Switch>
-        </div>
+            <div>
+                <Nav />
+                <Switch>
+                    <Route exact path="/" component={Welcome} />
+                    <Route path="/about" component={About} />
+                    <Route exact path="/test/:id" component={Test} />
+                    <Route component={FallBack} />
+                </Switch>
+            </div>
         </Router>
     );
 };
