@@ -18,6 +18,7 @@ export const getServerPosts = () => {
 };
 
 export const newServerPost = (post) => {
+    console.log(post);
     return new Promise((resolve, reject) => {
         axios.post(API_URL, post)
             .then((response) => {

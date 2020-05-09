@@ -1,9 +1,11 @@
 import React from 'react';
 
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
-import { newServerPost } from '../server-api';
+// import { newServerPost } from '../server-api';
+import { createPost } from '../actions';
 
 
 class NewPost extends React.Component {
@@ -12,15 +14,15 @@ class NewPost extends React.Component {
         console.log(props);
         this.state = {
             isEditing: true,
-            // tags: '',
-            // content: '',
-            // coverUrl: '',
         };
     }
 
     onSubmit = () => {
         console.log(this.state);
-        newServerPost(this.state);
+        this.props.createPost(this.state, this.props.history);
+        // newServerPost(this.state);
+
+        // toggle isEditing boolean
         const updatedState = { ...this.state };
         updatedState.isEditing = false;
         this.setState(updatedState);
@@ -29,6 +31,10 @@ class NewPost extends React.Component {
 
     onTitleChange = (event) => {
         this.setState({ title: event.target.value });
+    }
+
+    onCoverChange = (event) => {
+        this.setState({ coverUrl: event.target.value });
     }
 
     onContentChange = (event) => {
@@ -42,7 +48,9 @@ class NewPost extends React.Component {
             return (
                 <form onSubmit={this.onSubmit}>
                     <p>title: {this.state.title} </p>
-                    <input type="text" name="name" onChange={this.onTitleChange} />
+                    <input type="text" name="title" onChange={this.onTitleChange} />
+                    <p> coverUrl: {this.state.coverUrl} </p>
+                    <input type="text" name="coverUrl" onChange={this.onCoverChange} />
                     <p>content</p>
                     <textarea onChange={this.onContentChange} />
                     <Button variant="primary" onClick={this.onSubmit}>
@@ -55,6 +63,7 @@ class NewPost extends React.Component {
                 <div>
                     <div> New post created!</div>
                     <p> title: {this.state.title} </p>
+                    <p> coverUrl: {this.state.coverUrl} </p>
                     <p> content: {this.state.content} </p>
                 </div>
             );
@@ -62,12 +71,13 @@ class NewPost extends React.Component {
     }
 }
 
-// connect to redux state
-// const mapStateToProps = (reduxState) => ({
-//     posts: reduxState.posts,
-// });
+const mapDispatchToProps = (dispatch) => ({
+    createPost: (post, history) => dispatch(createPost(post, history)),
+});
 
-// export default connect(mapStateToProps, { fetchPosts })(Posts);
+
 // export default connect(NewPost);
 // export default NewPost;
-export default withRouter(NewPost);
+export default withRouter(connect(null, mapDispatchToProps)(NewPost));
+
+// export default withRouter(NewPost);

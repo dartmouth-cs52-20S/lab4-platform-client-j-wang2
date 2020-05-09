@@ -20,7 +20,6 @@ class Posts extends React.Component {
         this.props.fetchPosts();
     }
 
-
     render() {
         console.log('rendering posts');
         console.log(this.props);
