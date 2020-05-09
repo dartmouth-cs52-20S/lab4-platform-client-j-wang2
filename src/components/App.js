@@ -7,59 +7,42 @@ import {
     NavLink,
     Switch,
 } from 'react-router-dom';
-import Counter from './counter';
-import Controls from './controls';
+// import postList from './postList';
+import Posts from './Posts';
+import NewPost from './NewPost';
 
-const About = (props) => {
-    return <div> All there is to know about me </div>;
-};
 
-const Welcome = (props) => {
+const Post = (props) => {
     return (
         <div>
-            <Controls />
-            Welcome
-        </div>
-    );
-};
-
-const Test = (props) => {
-    return (
-        <div>
-            <Counter />
+            {/* <Counter /> */}
             ID: {props.match.params.id}
         </div>
-
     );
 };
 
-const FallBack = (props) => {
-    return <div>URL Not Found</div>;
-};
-
-const Nav = (props) => {
+const NavBar = (props) => {
     return (
         <nav>
             <ul>
-                <li><NavLink to="/" exact>Home</NavLink></li>
-                <li><NavLink to="/about" exact>About</NavLink></li>
-                <li><NavLink to="/test/id1">test id1</NavLink></li>
-                <li><NavLink to="/test/id2">test id2</NavLink></li>
+                <li><NavLink exact to="/">My Super Awesome Blog</NavLink></li>
+                <li><NavLink to="/posts/new" exact>New Post</NavLink></li>
             </ul>
         </nav>
     );
 };
 
+
 const App = (props) => {
     return (
         <Router>
             <div>
-                <Nav />
+                <NavBar />
                 <Switch>
-                    <Route exact path="/" component={Welcome} />
-                    <Route path="/about" component={About} />
-                    <Route exact path="/test/:id" component={Test} />
-                    <Route component={FallBack} />
+                    <Route exact path="/" component={Posts} />
+                    <Route path="/posts/new" component={NewPost} />
+                    <Route path="/posts/:postID" component={Post} />
+                    <Route render={() => (<div>post not found </div>)} />
                 </Switch>
             </div>
         </Router>

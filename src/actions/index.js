@@ -1,20 +1,25 @@
 // keys for actiontypes
 export const ActionTypes = {
-    INCREMENT: 'INCREMENT',
-    DECREMENT: 'DECREMENT',
+    FETCH_POSTS: 'FETCH_POSTS',
+    CREATE_POST: 'CREATE_POST',
 };
 
-
-export function increment() {
+export function fetchPosts(posts) {
     return {
-      type: ActionTypes.INCREMENT,
-      payload: null,
+        type: ActionTypes.FETCH_POSTS,
+        payload: posts,
     };
 }
 
-export function decrement() {
+export function createPost(post) {
     return {
-        type: ActionTypes.DECREMENT,
-        payload: null,
+        type: ActionTypes.CREATE_POST,
+        payload: post,
     };
 }
+
+// export function deletePost(id, hsitory) {
+//     return {
+//         type: ActionTypes.DEL
+//     }
+// }
