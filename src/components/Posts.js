@@ -6,7 +6,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import { fetchPosts } from '../actions';
-import { getServerPosts } from '../server-api';
+// import { getServerPosts } from '../server-api';
 import PostList from './PostList';
 
 
@@ -17,11 +17,7 @@ class Posts extends React.Component {
     }
 
     componentDidMount() {
-        console.log('here in comp did mount');
-        getServerPosts().then((posts) => {
-            console.log(posts);
-            this.props.fetchPosts(posts);
-        });
+        this.props.fetchPosts();
     }
 
 
@@ -43,6 +39,11 @@ const mapStateToProps = (reduxState) => ({
     posts: reduxState.posts,
 });
 
-export default connect(mapStateToProps, { fetchPosts })(Posts);
+
+const mapDispatchToProps = (dispatch) => ({
+    fetchPosts: () => dispatch(fetchPosts()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);
 // export default connect(Posts);
 // export default withRouter(connect(mapStateToProps, null)(Posts));
