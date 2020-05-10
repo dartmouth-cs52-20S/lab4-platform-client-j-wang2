@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PostListItem from './PostListItem';
 
-const PostList = ({ posts }) => {
+const PostList = (props) => {
+    console.log(props);
+    const { posts } = props;
     if (!posts) {
         return <div> Loading ...</div>;
     }
-    console.log(posts);
 
-    // let returnJSX = '';
     const postItems = posts.map((post) => {
         return (
-            <PostListItem key={post.id} id={post.id} tags={post.tags} coverUrl={post.coverUrl} title={post.title} />
+            <PostListItem key={post.id} id={post.id} title={post.title} tags={post.tags} coverUrl={post.coverUrl} history={props.history} />
         );
     });
 

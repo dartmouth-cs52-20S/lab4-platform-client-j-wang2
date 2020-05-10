@@ -20,13 +20,11 @@ class NewPost extends React.Component {
     onSubmit = () => {
         console.log(this.state);
         this.props.createPost(this.state, this.props.history);
-        // newServerPost(this.state);
 
-        // toggle isEditing boolean
+        // toggle isEditing boolean via shallow clone (in order to change react state)
         const updatedState = { ...this.state };
         updatedState.isEditing = false;
         this.setState(updatedState);
-        // this.state.isEditing = false;
     }
 
     onTitleChange = (event) => {

@@ -8,8 +8,8 @@ const API_KEY = '?key=j_wang';
 // keys for actiontypes
 export const ActionTypes = {
     FETCH_POSTS: 'FETCH_POSTS',
-    CREATE_POST: 'CREATE_POST',
-    DELETE_POST: 'DELETE_POST',
+    FETCH_POST: 'FETCH_POST',
+    // DELETE_POST: 'DELETE_POST',
 };
 
 export function fetchPosts() {
@@ -19,7 +19,7 @@ export function fetchPosts() {
                 console.log(response.data);
                 dispatch({ type: ActionTypes.FETCH_POSTS, payload: response.data });
             }).catch((error) => {
-                dispatch({ type: ActionTypes.ERROR_SET, error });
+                console.log(error);
             });
     };
 }
@@ -30,16 +30,43 @@ export function createPost(post, history) {
         axios.post(`${ROOT_URL}/posts${API_KEY}`, post)
             .then((response) => {
                 console.log(response.data);
-                dispatch({ type: ActionTypes.CREATE_POST, payload: post });
-                history.push('/'); // FIX THIS
+                dispatch({ type: ActionTypes.CREATE_POST, payload: post })
+                .then(history.push('/'));
             }).catch((error) => {
                 console.log(error);
-                dispatch({ type: ActionTypes.ERROR_SET, error });
             });
     };
 }
 
+export function updatePost(post, history) {
+    console.log(post);
+    return (dispatch) => {
+        axios.put(`${ROOT_URL}/posts/${post.id}${API_KEY}`, post)
+        .then((response) => {
+            console.log(response.data);
+            dispatch({ type: ActionTypes.CREATE_POST, payload: post })
+            .then(history.push('/'));
+        }).catch((error) => {
+            console.log(error);
+        });
+    };
+}
+
+export function fetchPost(id) {
+    return (dispatch) => {
+        axios.get(`${ROOT_URL}/posts/${id}?key=${API_KEY}`)
+            .then((response) => {
+                console.log(response.data);
+                dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
+            }).catch((error) => {
+                console.log(error);
+            });
+    };
+}
+
+
 export function deletePost(id, history) {
+    console.log(`deletePOst id ${id}`);
     return (dispatch) => {
         axios.delete(`${ROOT_URL}/posts/${id}?key=${API_KEY}`)
         .then((response) => {

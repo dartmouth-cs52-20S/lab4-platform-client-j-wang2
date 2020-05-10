@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import '../style.scss';
 import {
@@ -7,19 +8,10 @@ import {
     NavLink,
     Switch,
 } from 'react-router-dom';
-// import postList from './postList';
+// import Nav from 'react-bootstrap/Nav';
 import Posts from './Posts';
 import NewPost from './NewPost';
-
-
-const Post = (props) => {
-    return (
-        <div>
-            {/* <Counter /> */}
-            ID: {props.match.params.id}
-        </div>
-    );
-};
+import Post from './Post';
 
 const NavBar = (props) => {
     return (
@@ -32,8 +24,7 @@ const NavBar = (props) => {
     );
 };
 
-
-const App = (props) => {
+const App = () => {
     return (
         <Router>
             <div>
@@ -49,4 +40,10 @@ const App = (props) => {
     );
 };
 
-export default App;
+const mapStateToProps = (reduxState) => ({
+    posts: reduxState.posts,
+});
+
+export default connect(mapStateToProps, null)(App);
+
+// export default App;
