@@ -15,7 +15,7 @@ class Posts extends React.Component {
         console.log('rendering posts');
         return (
             <div>
-                <h1> rendering posts ! </h1>
+                <h1 id="home-title"> My Blog </h1>
                 <PostList history={this.props.history} posts={this.props.posts} className="flex-container" />
                 {/* { this.renderPosts(this.props.posts) } */}
             </div>

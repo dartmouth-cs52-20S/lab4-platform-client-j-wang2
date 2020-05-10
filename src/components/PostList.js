@@ -19,7 +19,6 @@ const PostList = (props) => {
     return (
         <ul>
             { postItems }
-            <li>here i am</li>
         </ul>
     );
 };

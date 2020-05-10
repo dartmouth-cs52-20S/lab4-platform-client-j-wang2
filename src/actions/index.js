@@ -9,7 +9,9 @@ const API_KEY = '?key=j_wang';
 export const ActionTypes = {
     FETCH_POSTS: 'FETCH_POSTS',
     FETCH_POST: 'FETCH_POST',
-    // DELETE_POST: 'DELETE_POST',
+    UPDATE_POST: 'UPDATE_POST',
+    DELETE_POST: 'DELETE_POST',
+    CREATE_POST: 'CREATE_POST',
 };
 
 export function fetchPosts() {
@@ -66,7 +68,7 @@ export function fetchPost(id) {
 
 
 export function deletePost(id, history) {
-    console.log(`deletePOst id ${id}`);
+    console.log(history);
     return (dispatch) => {
         axios.delete(`${ROOT_URL}/posts/${id}?key=${API_KEY}`)
         .then((response) => {

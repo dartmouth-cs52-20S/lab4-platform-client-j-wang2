@@ -44,21 +44,22 @@ class NewPost extends React.Component {
 
         if (this.state.isEditing) {
             return (
-                <form onSubmit={this.onSubmit}>
-                    <p>title: {this.state.title} </p>
+                <form className="PostInfo" onSubmit={this.onSubmit}>
+                    <h2>New Post</h2>
+                    <p>Title: {this.state.title} </p>
                     <input type="text" name="title" onChange={this.onTitleChange} />
                     <p> coverUrl: {this.state.coverUrl} </p>
                     <input type="text" name="coverUrl" onChange={this.onCoverChange} />
                     <p>content</p>
                     <textarea onChange={this.onContentChange} />
                     <Button variant="primary" onClick={this.onSubmit}>
-                        click me!
+                        Create new post!
                     </Button>
                 </form>
             );
         } else {
             return (
-                <div>
+                <div className="PostInfo">
                     <div> New post created!</div>
                     <p> title: {this.state.title} </p>
                     <p> coverUrl: {this.state.coverUrl} </p>
@@ -72,7 +73,6 @@ class NewPost extends React.Component {
 const mapDispatchToProps = (dispatch) => ({
     createPost: (post, history) => dispatch(createPost(post, history)),
 });
-
 
 // export default connect(NewPost);
 // export default NewPost;

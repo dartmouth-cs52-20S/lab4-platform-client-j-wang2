@@ -57,7 +57,7 @@ class PostInfo extends React.Component {
         }
         if (this.state.isEditing) {
             return (
-                <form onSubmit={this.onSubmit}>
+                <form className="PostInfo" onSubmit={this.onSubmit}>
                     <p>title: {this.state.title} </p>
                     <input type="text" name="title" defaultValue={this.state.title} onChange={this.onTitleChange} />
                     <p> coverUrl: {this.state.coverUrl} </p>
@@ -71,7 +71,7 @@ class PostInfo extends React.Component {
             );
         } else {
             return (
-                <div>
+                <div className="PostInfo">
                     <h1>{this.props.current.title}</h1>
                     <p>{this.props.current.coverUrl} </p>
                     <p>{this.props.current.content}</p>

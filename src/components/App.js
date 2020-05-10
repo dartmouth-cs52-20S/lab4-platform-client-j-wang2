@@ -16,8 +16,8 @@ import Post from './Post';
 const NavBar = (props) => {
     return (
         <nav>
-            <ul>
-                <li><NavLink exact to="/">My Super Awesome Blog</NavLink></li>
+            <ul className="flex-container">
+                <li><NavLink exact to="/">Home</NavLink></li>
                 <li><NavLink to="/posts/new" exact>New Post</NavLink></li>
             </ul>
         </nav>
