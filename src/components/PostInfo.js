@@ -18,9 +18,7 @@ class PostInfo extends React.Component {
     }
 
     onSubmit = () => {
-        console.log(this.props.current.id);
-        console.log(this.state);
-        this.props.updatePost(this.state);
+        this.props.updatePost(this.state, this.props.history);
 
         // toggle isEditing boolean via shallow clone (in order to change react state)
         const updatedState = { ...this.state };
@@ -90,7 +88,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     deletePost: (id, history) => dispatch(deletePost(id, history)),
-    updatePost: (post) => dispatch(updatePost(post)),
+    updatePost: (post, history) => dispatch(updatePost(post, history)),
 });
 
 // react-redux glue -- outputs Container that know state in props
