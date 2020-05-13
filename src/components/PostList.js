@@ -5,9 +5,12 @@ import PostListItem from './PostListItem';
 
 const PostList = (props) => {
     console.log(props);
-    const { posts } = props;
+    let { posts } = props;
+    // const posts = props.posts.result;
     if (!posts) {
         return <div> Loading ...</div>;
+    } else {
+        posts = props.posts.result;
     }
 
     const postItems = posts.map((post) => {

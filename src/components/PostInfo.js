@@ -7,14 +7,10 @@ import { deletePost, updatePost } from '../actions';
 class PostInfo extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             isEditing: false,
         };
-    }
-
-    componentDidMount() {
-        console.log(this.props);
+        console.log(props);
     }
 
     onSubmit = () => {
@@ -29,10 +25,10 @@ class PostInfo extends React.Component {
     onEditToggle = () => {
         this.setState({
             isEditing: true,
-            id: this.props.current.id,
-            title: this.props.current.title,
-            coverUrl: this.props.current.coverUrl,
-            content: this.props.current.content,
+            id: this.props.current.result.id,
+            title: this.props.current.result.title,
+            coverUrl: this.props.current.result.coverUrl,
+            content: this.props.current.result.content,
         });
     }
 
@@ -51,9 +47,9 @@ class PostInfo extends React.Component {
     render() {
         // https://reactjs.org/docs/forms.html
         if (!this.props.current) {
+            console.log(this.props.current);
             return <div> Loading ...</div>;
-        }
-        if (this.state.isEditing) {
+        } else if (this.state.isEditing) {
             return (
                 <form className="PostInfo" onSubmit={this.onSubmit}>
                     <p>title: {this.state.title} </p>
@@ -68,11 +64,12 @@ class PostInfo extends React.Component {
                 </form>
             );
         } else {
+            console.log(this.props.current);
             return (
                 <div className="PostInfo">
-                    <h1>{this.props.current.title}</h1>
-                    <p>{this.props.current.coverUrl} </p>
-                    <p>{this.props.current.content}</p>
+                    <h1>{this.props.current.result.title}</h1>
+                    <p>{this.props.current.result.coverUrl} </p>
+                    <p>{this.props.current.result.content}</p>
                     <button onClick={() => this.props.deletePost(this.props.current.id, this.props.history)} type="button">delete post</button>
                     <button onClick={() => this.onEditToggle()} type="button">edit post</button>
                 </div>

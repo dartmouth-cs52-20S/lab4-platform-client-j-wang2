@@ -2,9 +2,13 @@
 
 import axios from 'axios';
 
+// edited ROOT_URL and API_KEY for server development
+
+const ROOT_URL = 'https://wang-blog.herokuapp.com/api';
 // const ROOT_URL = 'http://localhost:9090/api';
-const ROOT_URL = 'https://platform.cs52.me/api';
-const API_KEY = '?key=j_wang';
+// const ROOT_URL = 'https://platform.cs52.me/api'; // from lab4
+const API_KEY = '';
+// const API_KEY = '?key=j_wang'; // from lab4
 
 // keys for actiontypes
 export const ActionTypes = {
@@ -57,7 +61,7 @@ export function updatePost(post, history) {
 
 export function fetchPost(id) {
     return (dispatch) => {
-        axios.get(`${ROOT_URL}/posts/${id}?key=${API_KEY}`)
+        axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`)
             .then((response) => {
                 console.log(response.data);
                 dispatch({ type: ActionTypes.FETCH_POST, payload: response.data });
