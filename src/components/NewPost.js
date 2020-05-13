@@ -11,14 +11,12 @@ import { createPost } from '../actions';
 class NewPost extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
         this.state = {
             isEditing: true,
         };
     }
 
     onSubmit = () => {
-        console.log(this.state);
         this.props.createPost(this.state, this.props.history);
 
         // toggle isEditing boolean via shallow clone (in order to change react state)
