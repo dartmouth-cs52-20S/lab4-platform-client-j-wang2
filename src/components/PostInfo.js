@@ -10,7 +10,6 @@ class PostInfo extends React.Component {
         this.state = {
             isEditing: false,
         };
-        console.log(props);
     }
 
     onSubmit = () => {
@@ -47,7 +46,6 @@ class PostInfo extends React.Component {
     render() {
         // https://reactjs.org/docs/forms.html
         if (!this.props.current) {
-            console.log(this.props.current);
             return <div> Loading ...</div>;
         } else if (this.state.isEditing) {
             return (
@@ -64,7 +62,6 @@ class PostInfo extends React.Component {
                 </form>
             );
         } else {
-            console.log(this.props.current);
             return (
                 <div className="PostInfo">
                     <h1>{this.props.current.result.title}</h1>

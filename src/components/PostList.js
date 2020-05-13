@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import PostListItem from './PostListItem';
 
 const PostList = (props) => {
-    console.log(props);
     let { posts } = props;
     // const posts = props.posts.result;
     if (!posts) {
