@@ -72,8 +72,4 @@ const mapDispatchToProps = (dispatch) => ({
     createPost: (post, history) => dispatch(createPost(post, history)),
 });
 
-// export default connect(NewPost);
-// export default NewPost;
 export default withRouter(connect(null, mapDispatchToProps)(NewPost));
-
-// export default withRouter(NewPost);
