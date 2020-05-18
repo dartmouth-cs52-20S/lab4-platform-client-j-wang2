@@ -4,8 +4,8 @@ import axios from 'axios';
 
 // edited ROOT_URL and API_KEY for server development
 
-// const ROOT_URL = 'https://wang-blog.herokuapp.com/api';
-const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'https://wang-blog.herokuapp.com/api';
+// const ROOT_URL = 'http://localhost:9090/api';
 // const ROOT_URL = 'https://platform.cs52.me/api'; // from lab4
 const API_KEY = '';
 // const API_KEY = '?key=j_wang'; // from lab4
@@ -128,11 +128,12 @@ export function signinUser({ email, password }, history) {
 }
 
 
-export function signupUser({ email, password }, history) {
+export function signupUser({ email, username, password }, history) {
     console.log(email);
+    console.log(username);
     console.log(password);
     return (dispatch) => {
-        axios.post(`${ROOT_URL}/signup`, { email, password })
+        axios.post(`${ROOT_URL}/signup`, { email, username, password })
         .then((response) => {
             console.log(response);
             dispatch({ type: ActionTypes.AUTH_USER });

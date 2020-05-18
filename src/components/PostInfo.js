@@ -44,12 +44,15 @@ class PostInfo extends React.Component {
     }
 
     render() {
+        console.log(this.props.current);
+        // console.log(this.state);
         // https://reactjs.org/docs/forms.html
         if (!this.props.current) {
             return <div> Loading ...</div>;
         } else if (this.state.isEditing) {
             return (
                 <form className="PostInfo" onSubmit={this.onSubmit}>
+                    <h2>By user: {this.props.current.result.author.username} </h2>
                     <p>title: {this.state.title} </p>
                     <input type="text" name="title" defaultValue={this.state.title} onChange={this.onTitleChange} />
                     <p> coverUrl: {this.state.coverUrl} </p>
@@ -65,6 +68,7 @@ class PostInfo extends React.Component {
             return (
                 <div className="PostInfo">
                     <h1>{this.props.current.result.title}</h1>
+                    <h2>By: {this.props.current.result.author.username} </h2>
                     <p>{this.props.current.result.coverUrl} </p>
                     <p>{this.props.current.result.content}</p>
                     <button onClick={() => this.props.deletePost(this.props.current.id, this.props.history)} type="button">delete post</button>

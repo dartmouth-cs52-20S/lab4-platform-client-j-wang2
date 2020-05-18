@@ -36,7 +36,7 @@ class SignIn extends React.Component {
         if (this.state.isEditing) {
             return (
                 <form className="PostInfo" onSubmit={this.onSubmit}>
-                    <h2>New Post</h2>
+                    <h2>Sign in</h2>
                     <p>email: </p>
                     <input type="text" name="email" onChange={this.onEmailChange} />
                     <p>password: </p>
