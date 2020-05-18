@@ -55,7 +55,7 @@ class NavBar extends React.Component {
                     <ul className="flex-container">
                         <li><NavLink exact to="/">Home</NavLink></li>
                         <li><NavLink to="/posts/new" exact>New Post</NavLink></li>
-                        <li onClick={() => this.signOut()}>Sign out</li>
+                        <li onClick={() => this.signOut()}> <NavLink to="/" exact>Sign out</NavLink></li>
                     </ul>
                 </nav>
             );

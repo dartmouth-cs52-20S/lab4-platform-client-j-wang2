@@ -14,6 +14,7 @@ import Post from './Post';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import NavBar from './NavBar';
+import PrivateRoute from './PrivateRoute';
 
 // const NavBar = (props) => {
 //     return (
@@ -33,7 +34,8 @@ const App = () => {
                 <NavBar />
                 <Switch>
                     <Route exact path="/" component={Posts} />
-                    <Route path="/posts/new" component={NewPost} />
+                    {/* <Route path="/posts/new" component={NewPost} /> */}
+                    <PrivateRoute path="/posts/new" component={NewPost} />
                     <Route path="/posts/:postID" component={Post} />
                     <Route path="/signin" component={SignIn} />
                     <Route path="/signup" component={SignUp} />
