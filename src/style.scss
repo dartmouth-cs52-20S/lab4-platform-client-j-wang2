@@ -1,0 +1,107 @@
+body, html {
+    font-family: "Roboto", sans-serif;
+    background-image: url('img/background.jpg');
+    background-position: center;
+    background-attachment: fixed;    
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.active {
+  color:black;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  padding: 20px;
+}
+#home-title {
+  margin: 20px;
+}
+
+.PostListItem {
+  box-sizing: border-box;
+  border: black 3px solid;
+  margin: 5px;
+  padding: 10px;
+  background-color: white;
+  opacity: .7;
+  list-style: none;
+}
+.PostListItem * {
+  opacity: 1;
+}
+
+.PostInfo {
+  box-sizing: border-box;
+  border: black 3px solid;
+  margin: 5px;
+  padding: 10px;
+  background-color: white;
+  opacity: .7;
+  list-style: none;
+}
+.PostInfo *{
+  opacity: 1;
+  max-width: 90%;
+}
+
+.flex-container {
+  display: flex;
+}
+
+PostList {
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+input {
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+textArea {
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+nav {
+  box-sizing: border-box;
+  border-bottom: black 3px solid;
+  background-color: white;
+  margin: none;
+  opacity: .7;
+  list-style: none;
+}
+nav ul {
+  margin: 0px;
+  justify-content: space-evenly;
+}
+
+nav ul li{
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+nav ul li a:hover {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+button {
+  border: black 1px solid;
+  border-radius: 2px;
+}
+
+img {
+  max-width: 90%;
+}
