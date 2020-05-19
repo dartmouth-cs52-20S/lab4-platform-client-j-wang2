@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import marked from 'marked';
 import { deletePost, updatePost } from '../actions';
 
 class PostInfo extends React.Component {
@@ -44,12 +45,11 @@ class PostInfo extends React.Component {
     }
 
     render() {
-        console.log(this.props.current);
-        // console.log(this.state);
         // https://reactjs.org/docs/forms.html
         if (!this.props.current) {
             return <div> Loading ...</div>;
         } else if (this.state.isEditing) {
+            console.log(this.props.current.result);
             return (
                 <form className="PostInfo" onSubmit={this.onSubmit}>
                     <h2>By user: {this.props.current.result.author.username} </h2>
@@ -65,13 +65,17 @@ class PostInfo extends React.Component {
                 </form>
             );
         } else {
+            console.log(this.props.current.result);
+            console.log(this.props.current.result.id);
+
             return (
                 <div className="PostInfo">
                     <h1>{this.props.current.result.title}</h1>
                     <h2>By: {this.props.current.result.author.username} </h2>
-                    <p>{this.props.current.result.coverUrl} </p>
+                    {/* <p>{this.props.current.result.coverUrl} </p> */}
+                    <div className="noteBody" dangerouslySetInnerHTML={{ __html: marked(this.props.current.result.coverUrl || '') }} />
                     <p>{this.props.current.result.content}</p>
-                    <button onClick={() => this.props.deletePost(this.props.current.id, this.props.history)} type="button">delete post</button>
+                    <button onClick={() => this.props.deletePost(this.props.current.result.id, this.props.history)} type="button">delete post</button>
                     <button onClick={() => this.onEditToggle()} type="button">edit post</button>
                 </div>
             );

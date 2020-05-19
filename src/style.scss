@@ -45,6 +45,7 @@ ul {
 }
 .PostInfo *{
   opacity: 1;
+  max-width: 90%;
 }
 
 .flex-container {
@@ -99,4 +100,8 @@ nav ul li a:hover {
 button {
   border: black 1px solid;
   border-radius: 2px;
+}
+
+img {
+  max-width: 90%;
 }

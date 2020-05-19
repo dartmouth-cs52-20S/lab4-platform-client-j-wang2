@@ -20,6 +20,7 @@ export const ActionTypes = {
     AUTH_USER: 'AUTH_USER',
     DEAUTH_USER: 'DEAUTH_USER',
     AUTH_ERROR: 'AUTH_ERROR',
+    ERROR_SET: 'ERROR_SET',
 };
 
 export function fetchPosts() {
@@ -129,9 +130,6 @@ export function signinUser({ email, password }, history) {
 
 
 export function signupUser({ email, username, password }, history) {
-    console.log(email);
-    console.log(username);
-    console.log(password);
     return (dispatch) => {
         axios.post(`${ROOT_URL}/signup`, { email, username, password })
         .then((response) => {
